@@ -1,0 +1,23 @@
+body {
+    background-color: #f4f6f8;
+}
+
+.table-responsive {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.btn-sm + .btn-sm {
+    margin-left: 5px;
+}
+
+.badge-cantidad-baja {
+    color: #b02a37;
+    font-weight: 600;
+}
