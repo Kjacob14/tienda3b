@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const https = require('https');
 const cors = require('cors');
 const db = require('./db');
 
@@ -92,6 +94,12 @@ app.delete('/api/productos/:id', async (req, res) => {
     }
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor de Tienda 3B corriendo en el puerto ${PORT}`);
+// TLS: el certificado y la llave se generan al construir la imagen (gen-cert.sh)
+const opcionesTLS = {
+    key: fs.readFileSync('/etc/ssl/tienda/server.key'),
+    cert: fs.readFileSync('/etc/ssl/tienda/server.crt')
+};
+
+https.createServer(opcionesTLS, app).listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor de Tienda 3B (HTTPS) corriendo en el puerto ${PORT}`);
 });

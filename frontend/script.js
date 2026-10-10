@@ -1,4 +1,4 @@
-const API_URL = 'http://api.tienda.lab:3000/api/productos';
+const API_URL = '/api/productos';
 
 const tablaProductos = document.getElementById('tablaProductos');
 const formProducto = document.getElementById('formProducto');

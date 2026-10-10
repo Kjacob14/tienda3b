@@ -1,7 +1,11 @@
 FROM node:20-alpine
-RUN apk add --no-cache git
-RUN git clone https://github.com/Kjacob14/tienda3b.git /app_repo
+RUN apk add --no-cache git openssl
+
+# Codigo del API y certificado TLS, todo desde GitHub
+RUN git clone https://github.com/Kjacob14/tienda3b.git /app_repo && \
+    sh /app_repo/backend/gen-cert.sh /etc/ssl/tienda
+
 WORKDIR /app_repo/backend
-RUN npm install --production
+RUN npm install --omit=dev
 EXPOSE 3000
 CMD ["node", "server.js"]
