@@ -1,3 +1,8 @@
 node_modules/
 .env
 *.log
+*.key
+*.crt
+*.csr
+*.pub
+certs/
