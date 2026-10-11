@@ -10,3 +10,4 @@ wsrep_sst_method=rsync
 innodb_buffer_pool_size=64M
 performance_schema=OFF
 max_connections=50
+wsrep_cluster_address=gcomm://192.168.20.4,192.168.20.5
