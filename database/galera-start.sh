@@ -26,4 +26,5 @@ else
   fi
 fi
 
+rm -f /var/lib/mysql/tc.log
 exec docker-entrypoint.sh mariadbd $ARGS --wsrep_node_address=$MI_IP
