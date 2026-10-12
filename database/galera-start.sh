@@ -21,6 +21,9 @@ if vivo; then
   ARGS="--wsrep_cluster_address=gcomm://192.168.20.4,192.168.20.5"
 else
   ARGS="--wsrep-new-cluster"
+  if [ "$MI_IP" = "192.168.20.4" ] && [ -f /var/lib/mysql/grastate.dat ]; then
+    sed -i 's/safe_to_bootstrap: 0/safe_to_bootstrap: 1/' /var/lib/mysql/grastate.dat
+  fi
 fi
 
 exec docker-entrypoint.sh mariadbd $ARGS --wsrep_node_address=$MI_IP
